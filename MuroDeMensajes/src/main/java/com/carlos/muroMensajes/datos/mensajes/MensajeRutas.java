@@ -1,20 +1,28 @@
 package com.carlos.muroMensajes.datos.mensajes;
 
+import java.util.List;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MensajeRutas {
+	
+	@Autowired
+	private MensajeDAO mensajeDAO;
+	
 
 	@GetMapping("/mensajes")
 	public ModelAndView rutaInicial() {
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("mensajes");
-		model.addObject("mensajes", new ArrayList<Mensaje>());
+		
+		List<Mensaje> listaMensajes = (List<Mensaje>) mensajeDAO.findAll();
+		model.addObject("mensajes", listaMensajes);
 		
 		return model;
 	}
