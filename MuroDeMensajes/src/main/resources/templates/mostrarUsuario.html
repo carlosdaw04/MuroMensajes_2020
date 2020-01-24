@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Carlos Costales">
+
+		<title>Usuario</title>
+		<!--  ICONO  -->
+		<link rel="shortcut icon" href= "https://img.icons8.com/doodle/16/000000/fire-element--v1.png"/>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+	</head>
+
+	<body>
+
+		<!-- Header -->
+		<header class="mt-5">
+			<div class="container">
+				<div class="mb-5">
+					<h1>Usuario <span th:text="${usuario.nombreUsuario}"></span></h1>
+				  	<ul class="list-group list-group-flush">
+					    <li class="list-group-item"><b>Nombre usuario: </b><span th:text="${usuario.nombreUsuario}"></span></li>
+					    <li class="list-group-item"><b>Contraseña: </b><span th:text="${usuario.password}"></span></li>
+					    <li class="list-group-item"><b>Nombre: </b><span th:text="${usuario.nombre}"></span></li>
+					    <li class="list-group-item"><b>Apellidos: </b><span th:text="${usuario.apellidos}"></span></li>
+					    <li class="list-group-item"><b>Email: </b><span th:text="${usuario.email}"></span></li>
+					    <li class="list-group-item"><b>Telefono: </b><span th:text="${usuario.telefono}"></span></li>
+				  	</ul>
+				</div> 
+			</div>
+			
+			<div class="container">
+				<a class="btn btn-primary" th:href="@{/usuarios}" role="button">Volver</a>
+			</div>
+			
+
+		</header>
+	</body>
+
+</html>
+
