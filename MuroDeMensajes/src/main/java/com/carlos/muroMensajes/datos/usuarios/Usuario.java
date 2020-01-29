@@ -18,7 +18,7 @@ public class Usuario implements UserDetails {
 	private String nombreUsuario;
 	
 	@Column
-	private String password;
+	private String contrasena;
 	
 	@Column
 	private String nombre;
@@ -41,12 +41,13 @@ public class Usuario implements UserDetails {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public String getNombre() {
@@ -93,6 +94,12 @@ public class Usuario implements UserDetails {
 
 		return this.nombreUsuario;
 	}
+	
+	@Override
+	public String getPassword() {
+
+		return this.contrasena;
+	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -117,5 +124,5 @@ public class Usuario implements UserDetails {
 
 		return true;
 	}
-	
+
 }
