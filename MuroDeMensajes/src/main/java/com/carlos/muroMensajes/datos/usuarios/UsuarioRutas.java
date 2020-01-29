@@ -3,6 +3,7 @@ package com.carlos.muroMensajes.datos.usuarios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +35,9 @@ public class UsuarioRutas {
 	
 	@PostMapping("usuarios/anadir")
 	private String rutaAnadir(@ModelAttribute Usuario usuario) {
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		usuario.setContrasena(passwordEncoder.encode(usuario.getPassword()));
 		
 		usuarioDAO.save(usuario);
 		
