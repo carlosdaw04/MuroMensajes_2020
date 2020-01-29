@@ -1,13 +1,18 @@
 package com.carlos.muroMensajes.datos.usuarios;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
-public class Usuario {
+public class Usuario implements UserDetails {
 
 	@Id
 	private String nombreUsuario;
@@ -74,6 +79,43 @@ public class Usuario {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+
+		return this.nombreUsuario;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+
+		return true;
 	}
 	
 }

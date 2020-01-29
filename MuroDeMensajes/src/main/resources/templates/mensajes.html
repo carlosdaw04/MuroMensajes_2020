@@ -51,9 +51,16 @@
 			</div>
 			
 			<div class="container">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearMensaje">
-					Nuevo mensaje
-				</button>
+				<div class="row">
+					<div class="col-3">
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearMensaje">
+							Nuevo Mensaje
+						</button>
+					</div>
+					<div class="col-3">
+						<a class="btn btn-secondary" th:href="@{/}" role="button">Volver a inicio</a>
+					</div>
+				</div>
 			</div>
 
 			<!-- Modal -->
