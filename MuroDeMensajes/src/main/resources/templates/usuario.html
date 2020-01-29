@@ -38,12 +38,14 @@
 									<th>Nombre usuario</th>
 									<th>Email</th>
 									<th>Visualizar</th>
+									<th>Editar</th>
 									<th>Eliminar</th>
 								</tr>
 								<tr th:each="usuario : ${usuarios}">
 									<td th:text="${usuario.nombreUsuario}">Usuario</td>
 									<td th:text="${usuario.email}">Email</td>
 									<td><a type="button" class="btn btn-info btn-sm" th:href="@{/usuarios/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Visualizar</a>
+									<td><a type="button" class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Editar</a>
 									<td><a type="button" class="btn btn-danger btn-sm" th:href="@{/usuarios/borrar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Eliminar</a>
 								</tr>
 							</table>

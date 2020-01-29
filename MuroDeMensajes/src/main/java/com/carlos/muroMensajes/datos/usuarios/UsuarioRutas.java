@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.carlos.muroMensajes.datos.mensajes.Mensaje;
 
 @Controller
 public class UsuarioRutas {
@@ -65,4 +65,26 @@ public class UsuarioRutas {
 		return model;
 		
 	}
+
+	@GetMapping("/usuarios/editar/{usuario}")
+	private ModelAndView editarUsuario(@PathVariable Usuario usuario) {
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("editarUsuario");
+		model.addObject("usuario", usuario);
+
+		return model;
+		
+	}
+	
+	@PostMapping("/updateUsuario")
+	public String updateUsuario(@ModelAttribute Usuario usuario) {
+		
+		usuarioDAO.save(usuario);
+
+		return "redirect:/usuarios";
+
+	}
+	
+	
 }
