@@ -1,19 +1,24 @@
 package com.carlos.muroMensajes;
 
+import java.util.List;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class RutasGenericas {
 
 	@GetMapping("/")
-	public ModelAndView rutaInicial() {
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("index");
+	public String inicial(Authentication authentication) {
 		
-		return model;
+		System.out.println(authentication.isAuthenticated());
+		System.out.println(authentication.getName());
+		List<GrantedAuthority> permisos = (List<GrantedAuthority>)authentication.getAuthorities();
+
+		return "index";
 	}
+	
 }
