@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.carlos.muroMensajes.roles.Rol;
+import com.carlos.muroMensajes.roles.RolDAO;
 
 
 @Controller
@@ -18,6 +20,10 @@ public class UsuarioRutas {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
+	
+	@Autowired
+	private RolDAO rolDAO;
+	
 	
 	@GetMapping("/usuarios")
 	private ModelAndView rutaUsuario() {
@@ -28,6 +34,9 @@ public class UsuarioRutas {
 		
 		List<Usuario> listaUsuarios = (List<Usuario>) usuarioDAO.findAll();
 		model.addObject("usuarios", listaUsuarios);
+		
+		List<Rol> listaRoles = (List<Rol>)rolDAO.findAll();
+		model.addObject("roles",listaRoles);
 		
 		return model;
 		
@@ -42,6 +51,7 @@ public class UsuarioRutas {
 		usuarioDAO.save(usuario);
 		
 		return "redirect:/usuarios";
+		
 	}
 
 	@GetMapping("/usuarios/borrar/{usuario}")
@@ -72,7 +82,10 @@ public class UsuarioRutas {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("editarUsuario");
 		model.addObject("usuario", usuario);
-
+		
+		List<Rol> listaRoles = (List<Rol>)rolDAO.findAll();
+		model.addObject("roles",listaRoles);
+		
 		return model;
 		
 	}
@@ -85,6 +98,5 @@ public class UsuarioRutas {
 		return "redirect:/usuarios";
 
 	}
-	
 	
 }
