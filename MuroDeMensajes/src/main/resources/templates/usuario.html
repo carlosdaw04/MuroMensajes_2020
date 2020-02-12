@@ -52,16 +52,8 @@
 										<td th:text="${usuario.email}">Email</td>
 										<td th:text="${usuario.rol.nombre}">Permisos</td>
 										<td><a type="button" class="btn btn-info btn-sm" th:href="@{/usuarios/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Visualizar</a></td>
-										<td>
-											<span th:remove="tag" th:if=" (${#authorization.expression('hasAnyAuthority(''ADMIN'',''MODERADOR'')')}) or (${#authentication.name} == ${usuario.nombreUsuario})">
-									        	<a type="button" class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Editar</a>
-											</span>
-										</td>
-										<td>
-											<span th:remove="tag" th:if=" (${#authorization.expression('hasAnyAuthority(''ADMIN'',''MODERADOR'')')}) or (${#authentication.name} == ${usuario.nombreUsuario})">
-												<a type="button" class="btn btn-danger btn-sm" th:href="@{/usuarios/borrar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Eliminar</a>
-											</span>
-										</td>
+										<td><a type="button" class="btn btn-info btn-sm" th:href="@{/usuarios/editar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Editar</a></td>
+										<td><a type="button" class="btn btn-danger btn-sm" th:href="@{/usuarios/borrar/{nombreUsuario}(nombreUsuario=${usuario.nombreUsuario})}">Eliminar</a></td>
 									</tr>
 								</tbody>
 
