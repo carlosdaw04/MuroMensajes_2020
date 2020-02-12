@@ -28,10 +28,16 @@
 		 	<div sec:authorize="isAuthenticated()">
 		    	User: <span sec:authentication="name">miquel</span>
 			</div>
+			
+			<div th:if="${session.carrito}">
+    			<p>Tienes <span th:remove="tag" th:text="${session.carrito.productos}"></span> producto(s)</p>
+			</div>
+	
 			<ul class="list-group list-group-flush" sec:authorize="hasAnyAuthority('ADMIN')">
 				<li class="list-group-item">TIENES SUPERVISION ADMIN</li>
-			</ul>	
-			<ul class="list-group" sec:authorize="hasAnyAuthority('MODERADOR')">
+			</ul>
+				
+			<ul class="list-group list-group-flush" sec:authorize="hasAnyAuthority('MODERADOR')">
 				<li class="list-group-item">ESPERO QUE MODERES BIEN</li>
 			</ul>
 			

@@ -28,6 +28,9 @@
 		<!-- Header -->
 		<header class="mt-5">
 			<div class="container">
+				<div th:if="${session.carrito}">
+	    			<p>Tienes <span th:remove="tag" th:text="${session.carrito.productos}"></span> producto(s)</p>
+				</div>
 				<h1>TABLA MENSAJES</h1>
 				<div class="mb-5"> <!--  mis datos -->
 					<div th:switch="${#lists.isEmpty(mensajes)}">
@@ -62,6 +65,9 @@
 					<div class="col-3">
 						<a class="btn btn-secondary" th:href="@{/}" role="button">Volver a inicio</a>
 					</div>
+					<div class="col-3">
+						<a class="btn btn-success" th:href="@{/addCarrito}" role="button">Añadir al carrito</a>
+					</div> 
 				</div>
 			</div>
 

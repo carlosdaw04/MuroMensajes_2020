@@ -2,6 +2,8 @@ package com.carlos.muroMensajes.datos.usuarios;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ public class UsuarioRutas {
 	
 	
 	@GetMapping("/usuarios")
-	private ModelAndView rutaUsuario() {
+	private ModelAndView rutaUsuario(HttpSession sesion) {
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("usuario");
