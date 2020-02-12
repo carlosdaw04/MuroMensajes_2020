@@ -20,6 +20,9 @@
 	</head>
 	
 	<body>
+		
+        <a type="button" class="btn btn-danger btn-sm mb-5" th:href="@{/logout}">Logout <span th:text="${#authentication.name}"></span></a>
+		
 		<header class="container">
 		
 		 	<div sec:authorize="isAuthenticated()">
