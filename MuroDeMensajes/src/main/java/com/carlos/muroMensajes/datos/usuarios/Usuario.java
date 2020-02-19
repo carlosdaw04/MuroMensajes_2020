@@ -3,16 +3,14 @@ package com.carlos.muroMensajes.datos.usuarios;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,12 +29,16 @@ public class Usuario implements UserDetails {
 	private String contrasena;
 	
 	@Column
+	@NotNull(message="No puedes dejar esto vacio")
+	@Size(min=3)
+	@Size(max=10, message="Nombre no puede ser tan largo. Maximo 10 caracteres")
 	private String nombre;
 	
 	@Column
 	private String apellidos;
 	
 	@Column
+	@Pattern(regexp="^(.+)@(.+)$", message="Email invalido")
 	private String email;
 	
 	@Column
