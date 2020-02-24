@@ -44,6 +44,9 @@ public class Usuario implements UserDetails {
 	@Column
 	private String telefono;
 	
+	@Column
+	private Integer edad;
+
 	@ManyToOne
 	private Rol rol = new Rol();	
 	
@@ -104,6 +107,14 @@ public class Usuario implements UserDetails {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
 
 	
 	@Override
@@ -149,6 +160,11 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "[nombreUsuario=" + nombreUsuario + ", edad=" + edad + "]";
 	}
 
 }

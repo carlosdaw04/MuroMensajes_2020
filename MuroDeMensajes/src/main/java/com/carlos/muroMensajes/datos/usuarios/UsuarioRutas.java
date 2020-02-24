@@ -118,4 +118,19 @@ public class UsuarioRutas {
 
 	}
 	
+	@GetMapping("/consultas")
+	public String consultas() {
+		
+		// Busqueda
+		List<Usuario> resultado = usuarioDAO.findByEdad(10);
+		
+		List<Usuario> resultadoCompleto = (List<Usuario>) usuarioDAO.findAll();
+		
+		System.out.println(resultadoCompleto);
+		
+		
+		return "redirect:/usuarios";
+
+	}
+	
 }
