@@ -13,7 +13,7 @@ public interface UsuarioDAO extends CrudRepository<Usuario, String> {
 	List<Usuario> findByEdadAndNombreUsuario(Integer edad,String usuario);
 	List<Usuario> findByEdadOrNombreUsuario(Integer edad,String usuario);	
 
-	List<Usuario> findByNombreUsuarioContaining(String cadena);
+	List<Usuario> findByNombreUsuario(String cadena);
 	List<Usuario> findByNombreUsuarioEndsWith(String cadena);	
 	List<Usuario> findByNombreUsuarioStartsWith(String cadena);	
 

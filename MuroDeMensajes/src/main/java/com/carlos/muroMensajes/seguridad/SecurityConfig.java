@@ -35,8 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	        .authorizeRequests()
 	        	.antMatchers("/usuarios").permitAll()
 	        	.antMatchers("/mensajes/**").authenticated()
-	        	.antMatchers("/usuarios/**").hasAuthority("ADMIN")
+//	        	.antMatchers("/usuarios/**").hasAuthority("ADMIN")
+	        	.antMatchers("/usuarios/editar/{usuario}").hasAnyAuthority("ADMIN","MODERADOR")
+	        	.antMatchers("/usuarios/borrar/{usuario}").hasAuthority("ADMIN")
 	        	.antMatchers("/usuarios/anadir").hasAnyAuthority("ADMIN","MODERADOR")
+	        	.antMatchers("/usuarios/{usuario}").hasAnyAuthority("ADMIN","MODERADOR","USER")
+
 		        .and()    	
 	        .formLogin()
 	        	.loginPage("/login")
